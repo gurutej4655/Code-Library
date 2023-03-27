@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int minStartValue(vector<int>& nums) {
+        int ans,temp=0;
+        vector<int> sum(nums.size());
+        for(int i=0;i<nums.size();i++)
+        {
+            temp+=nums[i];
+            sum[i]=temp;
+        }  
+        ans=sum[0];
+        int cnt=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(sum[i]>0) cnt++;
+            if(ans>sum[i]) ans=sum[i];
+        }  
+        if(cnt==nums.size()) return(1);
+        if(ans<0) return(-1*ans +1);
+        return(ans);
+    }
+};
