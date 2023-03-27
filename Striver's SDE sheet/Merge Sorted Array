@@ -1,0 +1,22 @@
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i=0,j=0;
+        for(i=0;i<n;i++){
+            nums1[i+m]=nums2[i];
+        }
+        int gap=ceil((float)(m+n)/2);
+        i=0;j=gap;
+        while(gap>0){
+            while(j<m+n){
+                if(nums1[i]>nums1[j]) swap(nums1[i],nums1[j]);
+                i++;
+                j++;
+            }
+            if(gap==1) gap=0;
+            else gap=ceil((float)gap/2);
+            i=0;
+            j=gap;
+        }                        
+    }
+};
