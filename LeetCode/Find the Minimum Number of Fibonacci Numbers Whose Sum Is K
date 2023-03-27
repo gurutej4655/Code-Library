@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int findMinFibonacciNumbers(int k) {
+        int sum,sum1=1,sum2=1,cnt=0;
+        sum=2;
+        while(sum<k)
+        {
+            sum2=sum1;
+            sum1=sum;
+            sum=sum1+sum2;           
+        }    
+        if(sum==k) return(1);   
+        while(k!=0)
+        {
+            k-=sum1;
+            cnt++;
+            while(sum1>k) 
+            {
+                sum=sum1;
+                sum1=sum2;
+                sum2=sum-sum1;
+            }          
+        } 
+        return(cnt);
+    }
+};
