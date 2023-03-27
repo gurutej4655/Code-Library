@@ -1,0 +1,25 @@
+class Solution {
+public:
+    float distance(int x1,int y1,int x2,int y2){
+        x1=x1-x2;
+        x1=pow(x1,2);
+        y1=y1-y2;
+        y1=pow(y1,2);
+        float ans=sqrt(x1+y1);
+        return(ans);
+    }
+    bool validSquare(vector<int>& p1, vector<int>& p2, vector<int>& p3, vector<int>& p4) {
+        set<float> s;
+        s.insert(distance(p1[0],p1[1],p2[0],p2[1]));
+        s.insert(distance(p1[0],p1[1],p3[0],p3[1]));                
+        s.insert(distance(p1[0],p1[1],p4[0],p4[1]));    
+        if(s.size()>2) return(false);            
+               
+        s.insert(distance(p2[0],p2[1],p3[0],p3[1]));                
+        s.insert(distance(p2[0],p2[1],p4[0],p4[1]));                
+        s.insert(distance(p3[0],p3[1],p4[0],p4[1]));               
+        
+        if(s.size()>2 || *(s.begin())==0) return(false);
+        return(true);
+    }
+};
