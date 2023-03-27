@@ -1,0 +1,10 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& a) {
+        int minn=a[0],maxx=0,n=a.size();
+        for(int i=0;i<n;i++){
+            if(a[i]<minn) minn=a[i];
+            if((a[i]-minn)>maxx) maxx=a[i]-minn;
+        }return(maxx);
+    }
+};
