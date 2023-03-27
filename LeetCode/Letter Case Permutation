@@ -1,0 +1,30 @@
+class Solution {
+public:
+    void solve(string s,vector<string>& ans,string& str,int i,int n)
+    {
+        if(i==n){
+            ans.push_back(str);
+            return;
+        }
+
+        if(isdigit(s[i])) {
+            str.push_back(s[i]);
+            solve(s,ans,str,i+1,n);
+            str.pop_back();
+        }
+        else{
+            str.push_back(toupper(s[i]));
+            solve(s,ans,str,i+1,n);
+            str.pop_back();
+            str.push_back(tolower(s[i]));
+            solve(s,ans,str,i+1,n);
+            str.pop_back();
+        }
+    }
+    vector<string> letterCasePermutation(string s) {
+        vector<string> ans;
+        string ss;
+        solve(s,ans,ss,0,s.size()); 
+        return(ans);       
+    }
+};
