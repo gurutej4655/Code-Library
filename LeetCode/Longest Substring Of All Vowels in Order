@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int longestBeautifulSubstring(string word) {
+        int n=word.size(),maxx=0,l,r,i=0;
+        while(i<n){
+            map<char,int> mp;
+            l=i;
+            r=i;
+            do{
+                mp[word[r]]++;
+                r++;
+            }while(r<n && word[r]>=word[r-1]);
+            if(maxx<r-i && (mp['a']!=0 && mp['e']!=0 && mp['i']!=0 && mp['o'] && mp['u']!=0)){
+                maxx=r-i;
+            }i=r;
+        }
+        return(maxx);        
+    }
+};
