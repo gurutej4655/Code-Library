@@ -1,0 +1,18 @@
+class Solution{
+public:	
+	// Function returns the second
+	// largest elements
+	int print2largest(int a[], int n) {
+	    // code here
+	    int m1=a[0],m2=-1;
+	    for(int i=1;i<n;i++){
+	        if(a[i]>m1){
+	            m2=m1;
+	            m1=a[i];
+	        }
+	        else if(a[i]<m1 && a[i]>m2){
+	            m2=a[i];
+	        }
+	    }return(m2);
+	}
+};
