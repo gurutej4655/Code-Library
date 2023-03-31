@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+int main() {
+	string str;
+	cin>>str;
+	int q,flag;
+	cin>>q;
+
+	while(q--){
+		int t,l,r;
+		char ch;
+		cin>>t>>l>>r;
+		if(t==1) {
+			cin>>ch;
+			for(int i=l-1;i<r;i++) str[i]=ch;
+		}
+		else{
+			flag=0;
+			int alpha[26]={0};
+			for(int i=l-1;i<r;i++) alpha[str[i]-'a']++;
+			for(int i=0;i<26;i++) {
+				if(alpha[i]%2==1) flag++;
+			}
+			if(flag==1 || flag==0) cout<<"Yes"<<endl;
+			else cout<<"No"<<endl;
+		}
+	}
+}
