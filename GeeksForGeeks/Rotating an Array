@@ -1,0 +1,9 @@
+class Solution{   
+public:
+    void leftRotate(int a[], int n, int d) {
+        reverse(a,a+d);
+        reverse(a+d,a+n);
+        reverse(a,a+n);
+        // code here
+    }
+};
