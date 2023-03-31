@@ -1,0 +1,43 @@
+#include <iostream>
+#include<set>
+using namespace std;
+int main() {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m,x,k=0;
+        cin>>n>>m>>x;
+        int a[m]={0};
+        int temp;
+        for(int i=0;i<n;i++){
+            cin>>temp;
+            if(temp<=m) a[temp-1]++;
+            else k++;            
+        }
+
+        multiset<int> st;
+        for(int i=0;i<m;i++){
+            st.insert(a[i]);
+        }
+        while(k!=0 && x!=0){
+            int minx=*(st.begin());
+            st.erase(st.begin());
+            st.insert(minx+1);
+            k--;
+            x--;
+        }
+        int c=*(st.begin()),b=*(prev(st.end()));
+
+        while(x!=0 && b-c>=1){
+            st.erase(st.begin());
+            st.erase(prev(st.end()));
+            st.insert(c+1);
+            st.insert(b-1);
+            c=*(st.begin());
+            b=*(prev(st.end()));
+            x--;
+        }
+        cout<<*(st.begin())<<endl;
+    }
+}
