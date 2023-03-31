@@ -1,0 +1,23 @@
+stack<int> solve(stack<int> s,int i,int n,int minn){
+    if(i==n-1){
+        s.push(minn);
+        return(s);
+    }
+    
+    int ele=max(minn,s.top());
+    minn=min(minn,s.top());
+    s.pop();
+    s=solve(s,i+1,n,minn);
+    s.push(ele);
+    return(s);
+}
+void SortedStack :: sort()
+{
+   //Your code here
+   int i,n=s.size(),minn;
+   for(i=0;i<n;i++){
+       minn=s.top();
+       s.pop();
+       s=solve(s,i,n,minn);
+   }
+}
