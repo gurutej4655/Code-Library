@@ -1,0 +1,30 @@
+#include <iostream>
+#include<stack>
+using namespace std;
+int main() {
+        string str;
+        cin>>str;
+        int k;
+        cin>>k;
+        stack<char> st;
+
+        for(auto ch : str){
+            while(k>0 && !st.empty() && st.top()<ch){
+                st.pop();
+                k--;
+            }
+            st.push(ch);
+        }
+
+        while(k>0){
+            st.pop();
+            k--;
+        }
+        str="";
+
+        while(!st.empty()){
+            str=st.top()+str;
+            st.pop();
+        }
+        cout<<str<<endl;
+}
