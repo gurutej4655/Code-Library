@@ -1,0 +1,33 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include<cstring>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+    string str;
+    cin>>str;
+    
+    int l,r;
+    int ch;
+    cin>>l>>r;
+    
+    for(int i=l-1;i<r;i++){
+        ch=str[i]-78;
+        ch=77-ch;
+        str[i]=ch;
+    }
+    while(l<r){
+        char chi=str[l-1];
+        str[l-1]=str[r-1];
+        str[r-1]=chi;
+        l++;
+        r--;
+    }
+    cout<<str;
+    return 0;
+}
