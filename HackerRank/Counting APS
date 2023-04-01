@@ -1,0 +1,29 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    string str;
+    getline(cin,str);
+    int count=0;
+    
+    for(long unsigned int i=0;i<str.length();i++)
+    {
+        if(str[i]=='A')
+        {
+            i++;
+            if(i<str.length() && str[i]=='P')
+            {
+                i++;
+                if(i<str.length() && str[i]=='S') count++;
+            }
+        }
+    }
+    cout<<count;
+    return 0;
+}
