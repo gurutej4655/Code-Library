@@ -1,0 +1,23 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int n,i=0,k;
+    cin>>n;
+    while(i!=n)
+    {
+        cin>>k;
+        if(k>=18) cout<<"Eligible"<<endl;
+        else cout<<"Not Eligible"<<endl;
+        i++;
+        if(i==200) break;
+    }
+    
+    return 0;
+}
