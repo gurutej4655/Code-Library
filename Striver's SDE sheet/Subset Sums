@@ -1,0 +1,20 @@
+class Solution
+{
+public:
+    void solve(vector<int> arr,vector<int> &sum,int i,int n,int temp){
+        if(i==n){
+            sum.push_back(temp);
+            return;
+        }
+        
+        solve(arr,sum,i+1,n,temp+arr[i]);
+        solve(arr,sum,i+1,n,temp);
+    }
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+        // Write Your Code here
+        vector<int> sum;
+        solve(arr,sum,0,arr.size(),0);
+        return(sum);
+    }
+};
