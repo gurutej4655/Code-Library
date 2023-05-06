@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+void solve(stack<int> &st,int minn,int i){
+	if(i==0){
+		st.push(minn);
+		return;
+	}
+
+	int ele=max(minn,st.top());
+	minn=min(minn,st.top());
+	st.pop();
+	solve(st,minn,i-1);
+	st.push(ele);
+} 
+void sortStack(stack<int> &stack)
+{
+	// Write your code here
+	for(int i=stack.size()-1;i>=0;i--){
+		int minn=stack.top();
+		stack.pop();
+		solve(stack,minn,i);
+		//stack.push(minn);
+	}
+}
