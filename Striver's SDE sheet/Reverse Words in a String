@@ -1,0 +1,48 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        int i=0,j=0,cnt=0;
+        int flag=0;
+        while(i<s.size() && s[i]==' ') i++;
+        while(i<s.size()){
+            if(s[i]!=' ') { s[j]=s[i]; i++; flag=0; j++; }
+            else{
+                if(flag==0){
+                    s[j]=s[i];
+                    i++;
+                    j++;
+                    flag=1;
+                }
+                else{
+                    cnt++;
+                    i++;
+                    flag=1;
+                }
+            }
+        }
+        i=0;
+        if(s[j-1]==' ') j--;
+        int n=j;
+        while(n<s.size()) { s.pop_back(); }
+        j=n-1;
+        i=0;
+        while(i<j){
+            swap(s[i],s[j]);
+            i++;
+            j--;
+        }
+        i=0;
+        while(i<n){
+            j=i;
+            while(j<n-1 && s[j+1]!=' ') j++;
+            int tempj=j;
+            while(i<j){
+                swap(s[i],s[j]);
+                i++;
+                j--;
+            }
+            i=tempj+2;
+        }        
+        return(s);
+    }
+};
