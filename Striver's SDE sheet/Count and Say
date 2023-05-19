@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string solve(string str){
+        string ans="";
+        while(str.size()){
+            char temp=str[str.size()-1];
+            ans=temp+ans;
+            int cnt=0;
+            while(str.size() && temp==str[str.size()-1]){
+                str.pop_back();
+                cnt++;
+            }
+            ans=to_string(cnt)+ans;
+        }return(ans);
+    }
+    string countAndSay(int n) {
+        if(n==1) return("1");
+        string ans=solve("1");
+        for(int i=2;i<n;i++){
+            ans=solve(ans);
+        } return(ans);       
+    }
+};
