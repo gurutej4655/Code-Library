@@ -1,0 +1,25 @@
+ int solve1(TreeNode* root,int n,vector<int> &ans){
+     if(root==NULL) return(0);
+     if(root->val==n){
+         ans.push_back(n);
+         return(1);
+     }
+     int ansx=0,ansy=0;
+     
+     if(root->left!=NULL){
+         ans.push_back(root->val);
+         ansx=solve1(root->left,n,ans);
+         if(!ansx) ans.pop_back();
+     }
+     if(root->right!=NULL && !ansx){
+         ans.push_back(root->val);
+         ansy=solve1(root->right,n,ans);
+         if(!ansy) ans.pop_back();
+     }
+     return(ansx || ansy);
+ }
+vector<int> Solution::solve(TreeNode* A, int B) {
+    vector<int> ans;
+    solve1(A,B,ans);
+    return(ans);
+}
