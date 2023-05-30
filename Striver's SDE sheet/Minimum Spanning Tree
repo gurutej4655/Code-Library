@@ -1,0 +1,27 @@
+class Solution
+{
+	public:
+	//Function to find sum of weights of edges of the Minimum Spanning Tree.
+    int spanningTree(int V, vector<vector<int>> adj[])
+    {
+        // code here
+        set<pair<int,int>> st;
+        vector<int> visited(V,-1);
+        st.insert({0,0});
+        int sum=0;
+        
+        while(!st.empty()){
+            int cur=(*st.begin()).second,wt=(*st.begin()).first;
+            st.erase(st.begin());
+            if(visited[cur]==1) continue;
+            visited[cur]=1;
+            sum+=wt;
+            
+            for(auto i:adj[cur]){
+                if(visited[i[0]]==-1){
+                    st.insert({i[1],i[0]});
+                }
+            }
+        }return(sum);
+    }
+};
